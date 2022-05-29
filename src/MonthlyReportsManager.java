@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class MonthlyReportsManager {
@@ -14,7 +15,7 @@ public class MonthlyReportsManager {
         for (int m = 1; m <= 3; m++) {
             MonthlyReport report = new MonthlyReport();
             monthlyReports.add(report);
-            String content = reader.readFileContentsOrNull("resources/m.20210" + m + ".csv");
+            String content = reader.readFileContentsOrNull("resources" + File.separator + "m.20210" + m + ".csv");
             if (!(content == null)) {
                 String[] lines = content.split("\n");
                 for (int i = 1; i < lines.length; i++) {

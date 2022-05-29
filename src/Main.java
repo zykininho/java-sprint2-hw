@@ -5,32 +5,40 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        MonthlyReportsManager monthlyReportsManager = new MonthlyReportsManager();
-        YearlyReport yearlyReport = new YearlyReport(2021);
+        final MonthlyReportsManager monthlyReportsManager = new MonthlyReportsManager();
+        final YearlyReport yearlyReport = new YearlyReport(2021);
         DataChecking dataChecking = new DataChecking();
 
         while (true) {
             printMenu();
             int command = scanner.nextInt();
 
-            if (command == 1) {
-                monthlyReportsManager.load();
-            } else if (command == 2) {
-                yearlyReport.load();
-            } else if (command == 3) {
-                dataChecking.checkReports(monthlyReportsManager, yearlyReport);
-            } else if (command == 4) {
-                monthlyReportsManager.getInfo();
-            } else if (command == 5) {
-                yearlyReport.getInfo();
-            } else if (command == 0) {
-                System.out.println("Выход");
-                break;
-            } else {
-                System.out.println("Такой команды нет. Выберите команду из списка");
+            switch (command) {
+                case (1):
+                    monthlyReportsManager.load();
+                    continue;
+                case (2):
+                    yearlyReport.load();
+                    continue;
+                case (3):
+                    dataChecking.checkReports(monthlyReportsManager, yearlyReport);
+                    continue;
+                case (4):
+                    monthlyReportsManager.getInfo();
+                    continue;
+                case (5):
+                    yearlyReport.getInfo();
+                    continue;
+                case (0):
+                    System.out.println("Выход");
+                    scanner.close();
+                    break;
+                default:
+                    System.out.println("Такой команды нет. Выберите команду из списка");
+                    continue;
             }
+            break;
         }
-        scanner.close();
     }
 
     public static void printMenu() {
@@ -44,4 +52,3 @@ public class Main {
     }
 
 }
-
